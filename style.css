@@ -1126,3 +1126,228 @@ body.dark .notice {
     flex-direction: column;
   }
 }
+
+/* =========================================
+   BuCor Exam Review — Pink & Warm Brown Theme
+   ========================================= */
+
+:root {
+  --navy: #604600;
+  --blue: #8A5D00;
+  --ink: #402E00;
+  --muted: #806A62;
+  --background: #FFF5F5;
+  --surface: #FFFFFF;
+  --border: #F0CECE;
+  --pink-light: #FFDBDB;
+  --pink: #FFC4C4;
+  --brown: #604600;
+}
+
+/* Main page */
+body {
+  background: #FFF5F5 !important;
+  color: #402E00;
+}
+
+/* Main banner / hero */
+.hero {
+  background: linear-gradient(135deg, #604600, #8A5D00) !important;
+  color: #FFFFFF;
+}
+
+.hero h1,
+.hero h2,
+.hero p {
+  color: #FFFFFF;
+}
+
+.hero h1 span,
+.hero .highlight {
+  color: #FFDBDB;
+}
+
+/* Statistics and content cards */
+.stat-card,
+.card,
+.topic-card,
+.study-card,
+.result-item,
+.quiz-card,
+.flashcard {
+  border-color: #F0CECE;
+}
+
+.stat-card,
+.card,
+.topic-card,
+.study-card {
+  background-color: #FFFFFF;
+}
+
+/* Navigation */
+.tabs,
+.tab-bar,
+nav.tabs {
+  background-color: #FFDBDB;
+}
+
+.tab.active,
+.tab[aria-current="page"] {
+  background-color: #FFFFFF;
+  color: #604600;
+}
+
+.tab {
+  color: #604600;
+}
+
+/* Buttons */
+button.primary-button,
+button.primary,
+.primary-button {
+  background-color: #604600;
+  border-color: #604600;
+  color: #FFFFFF;
+}
+
+button.primary-button:hover,
+button.primary:hover,
+.primary-button:hover {
+  background-color: #806000;
+}
+
+button.secondary-button,
+.secondary-button {
+  border-color: #B18A8A;
+  color: #604600;
+}
+
+button.secondary-button:hover,
+.secondary-button:hover {
+  background-color: #FFDBDB;
+}
+
+/* Links and interactive accents */
+a {
+  color: #8A5D00;
+}
+
+button:focus-visible,
+a:focus-visible,
+select:focus-visible {
+  outline: 3px solid #C77D7D;
+  outline-offset: 3px;
+}
+
+/* Flashcard */
+#flashcard {
+  background-color: #FFDBDB;
+  color: #402E00;
+  border-color: #F0BABA;
+}
+
+#flashcard.flipped {
+  background-color: #FFC4C4;
+  color: #402E00;
+}
+
+/* Quiz answers */
+.answer-option {
+  background-color: #FFFFFF;
+  border-color: #F0CECE;
+  color: #402E00;
+}
+
+.answer-option:hover:not(:disabled) {
+  background-color: #FFF0F0;
+  border-color: #C77D7D;
+}
+
+.answer-option.correct {
+  background-color: #E4F3E5;
+  border-color: #47945A;
+  color: #245C30;
+}
+
+.answer-option.incorrect {
+  background-color: #FFDBDB;
+  border-color: #C76B6B;
+  color: #702F2F;
+}
+
+/* Inputs and selectors */
+input,
+select,
+textarea {
+  background-color: #FFFFFF;
+  border-color: #E8C6C6;
+  color: #402E00;
+}
+
+/* Progress bars */
+.progress-bar,
+#knownProgressBar,
+#quizProgressBar,
+#timerBar {
+  background-color: #8A5D00;
+}
+
+/* Toast notification */
+#toast {
+  background-color: #604600;
+  color: #FFFFFF;
+}
+
+/* Footer */
+footer {
+  border-color: #F0CECE;
+  color: #806A62;
+}
+
+/* Dark mode: keep text readable */
+body.dark {
+  background: #241C16 !important;
+  color: #FFF0F0;
+}
+
+body.dark .stat-card,
+body.dark .card,
+body.dark .topic-card,
+body.dark .study-card,
+body.dark .result-item {
+  background-color: #352820;
+  border-color: #654B3B;
+  color: #FFF0F0;
+}
+
+body.dark .tabs,
+body.dark .tab-bar,
+body.dark nav.tabs {
+  background-color: #3A2922;
+}
+
+body.dark .tab {
+  color: #FFDBDB;
+}
+
+body.dark .tab.active,
+body.dark .tab[aria-current="page"] {
+  background-color: #604600;
+  color: #FFFFFF;
+}
+
+body.dark .answer-option,
+body.dark input,
+body.dark select,
+body.dark textarea {
+  background-color: #352820;
+  border-color: #654B3B;
+  color: #FFF0F0;
+}
+
+body.dark #flashcard {
+  background-color: #604040;
+  color: #FFFFFF;
+}
+
