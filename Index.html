@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b46">
+  <meta name="description" content="Free BuCor exam reviewer with flashcards, quizzes, and timed challenges.">
+  <title>BuCor Exam Review</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="#" class="brand">
+      <span class="brand-mark">BR</span>
+      <span>
+        <strong>BuCor Exam Review</strong>
+        <small>Study smarter. Recall faster.</small>
+      </span>
+    </a>
+
+    <div class="top-actions">
+      <span id="connectionStatus" class="status-pill">Connecting...</span>
+      <button id="themeToggle" class="icon-button"
+        aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">YOUR EXAM PREP COMPANION</span>
+        <h1>Small study sessions.<br><span>Stronger recall.</span></h1>
+        <p>
+          Master your exam pointers with flashcards, practice quizzes,
+          and timed challenges. Track your progress as you prepare.
+        </p>
+
+        <div class="hero-actions">
+          <button class="primary-button" data-go="flashcards">
+            Start studying →
+          </button>
+          <button class="secondary-button" data-go="quiz">
+            Take a quiz
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="visual-card back-card"></div>
+        <div class="visual-card front-card">
+          <span>QUICK RECALL</span>
+          <strong>Know it.<br>Recall it.</strong>
+          <b>✦</b>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATISTICS -->
+    <section class="stats-grid" aria-label="Your study statistics">
+      <article class="stat-card">
+        <span class="stat-icon">▤</span>
+        <div>
+          <small>Flashcards</small>
+          <strong id="statCards">—</strong>
+        </div>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon">✓</span>
+        <div>
+          <small>Quizzes taken</small>
+          <strong id="statQuizzes">0</strong>
+        </div>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon">◎</span>
+        <div>
+          <small>Average score</small>
+          <strong id="statAverage">0%</strong>
+        </div>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon">⚡</span>
+        <div>
+          <small>Best score</small>
+          <strong id="statBest">0%</strong>
+        </div>
+      </article>
+    </section>
+
+    <!-- NAVIGATION -->
+    <nav class="tabs" aria-label="Study modes">
+      <button class="tab active" data-mode="overview">Overview</button>
+      <button class="tab" data-mode="flashcards">Flashcards</button>
+      <button class="tab" data-mode="quiz">Practice Quiz</button>
+      <button class="tab" data-mode="speed">Speed Challenge</button>
+      <button class="tab" data-mode="review">Missed Questions</button>
+    </nav>
+
+    <!-- OVERVIEW -->
+    <section id="overviewView" class="view">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">CHOOSE YOUR NEXT MOVE</span>
+          <h2>How do you want to study?</h2>
+        </div>
+        <span id="contentSummary" class="muted">
+          Loading study materials...
+        </span>
+      </div>
+
+      <div class="mode-grid">
+        <button class="mode-card blue-card" data-go="flashcards">
+          <span class="mode-icon">▤</span>
+          <small>ACTIVE RECALL</small>
+          <strong>Flashcards</strong>
+          <span>Flip, remember, repeat.</span>
+          <b>Start reviewing →</b>
+        </button>
+
+        <button class="mode-card purple-card" data-go="quiz">
+          <span class="mode-icon">✓</span>
+          <small>KNOWLEDGE CHECK</small>
+          <strong>Practice Quiz</strong>
+          <span>Answer questions and learn from feedback.</span>
+          <b>Test yourself →</b>
+        </button>
+
+        <button class="mode-card orange-card" data-go="speed">
+          <span class="mode-icon">◷</span>
+          <small>BEAT THE CLOCK</small>
+          <strong>Speed Challenge</strong>
+          <span>Answer as many as you can in 60 seconds.</span>
+          <b>Start challenge →</b>
+        </button>
+      </div>
+
+      <div class="section-heading topic-heading">
+        <div>
+          <span class="eyebrow">STUDY BY SUBJECT</span>
+          <h2>Explore topics</h2>
+        </div>
+      </div>
+
+      <div id="topicGrid" class="topic-grid">
+        <p class="muted">Loading topics...</p>
+      </div>
+
+      <aside class="notice">
+        <span class="notice-icon">ⓘ</span>
+        <p>
+          <strong>Study note:</strong>
+          The content is based on your supplied exam pointers.
+          Verify legal provisions, dates, figures, and potentially
+          outdated entries against current official sources.
+        </p>
+      </aside>
+    </section>
+
+    <!-- FLASHCARDS -->
+    <section id="flashcardsView" class="view hidden">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">ACTIVE RECALL</span>
+          <h2>Flashcards</h2>
+          <p class="muted">
+            Try to answer out loud before revealing the back.
+          </p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <label>
+          Topic
+          <select id="flashTopic">
+            <option value="ALL">All topics</option>
+          </select>
+        </label>
+
+        <button id="shuffleCards" class="secondary-button">
+          ↻ Shuffle
+        </button>
+      </div>
+
+      <div class="flash-wrap">
+        <div class="flash-meta">
+          <span id="flashTopicLabel">ALL TOPICS</span>
+          <span id="flashCounter">0 / 0</span>
+        </div>
+
+        <button id="flashcard" class="flashcard"
+          aria-label="Flip flashcard">
+          <span id="flashFaceLabel" class="flash-face-label">
+            QUESTION
+          </span>
+          <span id="flashText" class="flash-text">
+            Loading cards...
+          </span>
+          <span id="flipHint" class="flip-hint">
+            Click to reveal answer ↻
+          </span>
+        </button>
+
+        <div class="flash-controls">
+          <button id="prevCard" class="secondary-button">
+            ← Previous
+          </button>
+          <button id="markKnown" class="primary-button">
+            I knew it ✓
+          </button>
+          <button id="nextCard" class="secondary-button">
+            Next →
+          </button>
+        </div>
+
+        <div class="known-progress">
+          <span id="knownProgressText">0 marked known</span>
+          <div class="progress-track">
+            <span id="knownProgressBar"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRACTICE QUIZ -->
+    <section id="quizView" class="view hidden">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">KNOWLEDGE CHECK</span>
+          <h2 id="quizHeading">Practice Quiz</h2>
+          <p class="muted">
+            Choose the best answer and review the explanation.
+          </p>
+        </div>
+      </div>
+
+      <div id="quizSetup" class="panel setup-row">
+        <label>
+          Topic
+          <select id="quizTopic">
+            <option value="ALL">All topics</option>
+          </select>
+        </label>
+
+        <label>
+          Number of questions
+          <select id="quizCount">
+            <option>5</option>
+            <option selected>10</option>
+            <option>15</option>
+            <option>20</option>
+          </select>
+        </label>
+
+        <button id="startQuiz" class="primary-button">
+          Start Quiz →
+        </button>
+      </div>
+
+      <div id="quizPlay" class="panel hidden">
+        <div class="quiz-topline">
+          <span id="quizTopicLabel" class="eyebrow"></span>
+          <span id="quizProgressText">Question 1 of 10</span>
+        </div>
+
+        <div class="progress-track">
+          <span id="quizProgressBar"></span>
+        </div>
+
+        <div id="questionNumber" class="question-number">
+          QUESTION 01
+        </div>
+
+        <h3 id="questionText">Question goes here</h3>
+
+        <div id="answerOptions" class="answer-options"></div>
+
+        <div id="answerFeedback"
+          class="feedback hidden"
+          aria-live="polite"></div>
+
+        <div class="quiz-footer">
+          <span id="quizLiveScore" class="muted">Score: 0</span>
+          <button id="nextQuestion" class="primary-button" disabled>
+            Check answer
+          </button>
+        </div>
+      </div>
+
+      <div id="quizResult" class="panel hidden"></div>
+    </section>
+
+    <!-- SPEED CHALLENGE -->
+    <section id="speedView" class="view hidden">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">BEAT THE CLOCK</span>
+          <h2>Speed Challenge</h2>
+          <p class="muted">
+            Answer as many questions as you can in 60 seconds.
+          </p>
+        </div>
+      </div>
+
+      <div id="speedSetup" class="panel speed-intro">
+        <div class="timer-bubble">
+          60
+          <span>SECONDS</span>
+        </div>
+        <h3>Ready, set, recall!</h3>
+        <p>
+          Questions are randomized. Your result stays in this browser.
+        </p>
+        <button id="startSpeed" class="primary-button">
+          Start Challenge
+        </button>
+      </div>
+
+      <div id="speedPlay" class="panel hidden">
+        <div class="speed-head">
+          <span id="timerReadout">60s</span>
+          <span id="speedScore">Score: 0</span>
+        </div>
+
+        <div class="progress-track">
+          <span id="timerBar"></span>
+        </div>
+
+        <div id="speedQuestionNumber" class="question-number"></div>
+        <h3 id="speedQuestionText"></h3>
+        <div id="speedOptions" class="answer-options"></div>
+        <div id="speedFeedback" class="feedback hidden"></div>
+
+        <button id="speedNext"
+          class="primary-button full-width hidden">
+          Next Question →
+        </button>
+      </div>
+
+      <div id="speedResult" class="panel hidden"></div>
+    </section>
+
+    <!-- MISSED QUESTIONS -->
+    <section id="reviewView" class="view hidden">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">TARGETED PRACTICE</span>
+          <h2>Missed Questions</h2>
+          <p class="muted">
+            Revisit questions you missed in previous attempts on this device.
+          </p>
+        </div>
+      </div>
+
+      <div id="reviewContent" class="panel">
+        <p class="muted">
+          No missed questions yet. Complete a quiz to build your review list.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>BuCor Exam Review · Community study tool</span>
+      <span>Progress saved locally on this device</span>
+    </footer>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Keep app.js in the same GitHub repository folder. -->
+  <script src="app.js"></script>
+</body>
+</html>
